@@ -1,1 +1,51 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+@import url("https://fonts.googleapis.com/css2?family=B612+Mono&display=swap");
+* {
+  font-family: "B612 Mono", monospace;
+}
+.ownContainer {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.backgroundImage {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(./img/steam-summer-sale-adventure.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-size: cover;
+}
+.content {
+  max-width: 650px;
+  margin: 10rem 10rem;
+}
+
+.content h1 {
+  color: #00897b;
+  text-transform: uppercase;
+  line-height: 80px;
+  margin-bottom: 30px;
+}
+.content span {
+  color: white;
+}
+.fade-in-text {
+  animation: fadeIn 3s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
