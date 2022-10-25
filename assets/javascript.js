@@ -26,23 +26,36 @@ function fetchData() {
         let gamePrice = document.createElement("p");
         let normalPriceCont = document.createElement("div");
         let regularPrice = document.createElement("p");
+        let discountDiv = document.createElement("div");
+        let discountPercent = document.createElement("p");
 
-        gameDiv.classList.add("columns", "is-multiline", "m-4", "is-centered");
+        discountDiv.classList.add("column", "is-one-quarter");
+
+        gameDiv.classList.add(
+          "columns",
+          "is-multiline",
+          "m-4",
+          "is-centered",
+          "mainContent"
+        );
         picGame.classList.add(
           "column",
-          "is-half",
+          "is-one-quarter",
           "is-flex",
           "is-flex-direction-row"
         );
         normalPriceCont.classList.add("column", "is-one-quarter");
         gamePriceCont.classList.add("column", "is-one-quarter");
         gamePic.classList.add("px-4");
+        discountPercent.textContent = `% off : ${data[i].savings}`;
         gameName.textContent = data[i].title;
-        gameName.href =
-          "https://www.cheapshark.com/redirect?dealID=" + data[i].dealID;
+        gameName.href = `https://www.cheapshark.com/redirect?dealID=${data[i].dealID}`;
         gamePic.src = data[i].thumb;
         gamePrice.textContent = "Sale Price " + data[i].salePrice;
         regularPrice.textContent = "Normal Price " + data[i].normalPrice;
+
+        gameDiv.append(discountDiv);
+        discountDiv.append(discountPercent);
 
         containerDiv.append(gameDiv);
         gameDiv.append(picGame);
