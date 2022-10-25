@@ -13,9 +13,9 @@
   </head>
   <body>
     <!-- Start of Landing Page -->
-    <section class="ownContainer">
+    <section class="container is-fluid">
       <div class="backgroundImage">
-        <div class="has-text-white content is-size-3 is-size-6-mobile">
+        <div class="has-text-white content is-size-3 is-size-7-mobile">
           <h1 class="has-text-weight-bold fade-in-text">
             Never pay <br />
             <span class="fade-in-text"> FULL PRICE</span> <br />for games again!
@@ -33,12 +33,35 @@
       </div>
     </section>
     <!-- End of Landing Page -->
+    <section class="container is-fluid my-6">
+      <!--  search bar -->
+      <div class="field is-grouped">
+        <p class="control is-expanded">
+          <input
+            id="searchBar"
+            class="input"
+            type="text"
+            placeholder="Find a game!"
+          />
+        </p>
+        <p class="control">
+          <a class="button is-info" id="btnClick"> Search </a>
+        </p>
+      </div>
+    </section>
+    <section
+      class="container is-fluid mainContent fade-in-text"
+      id="searchResults"
+    ></section>
+
+    <!-- start of game section -->
     <section class="container is-fluid mainContent fade-in-text" id="dealInfo">
       <h1>
         Check Out the Best Deals We've Found Today! <br />Click on the title to
         learn more!
       </h1>
     </section>
+    <!-- end of game section -->
 
     <script src="./assets/javascript.js"></script>
   </body>
