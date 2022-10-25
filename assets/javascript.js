@@ -2,8 +2,11 @@ var requestOptions = {
   method: "GET",
   redirect: "follow",
 };
+
 let dealInfo = document.getElementById("dealInfo");
 let apiUrl = "https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15";
+let userInput = document.getElementById("searchBar");
+let button = document.getElementById("btnClick");
 
 function fetchData() {
   fetch(apiUrl)
@@ -29,7 +32,7 @@ function fetchData() {
         let discountDiv = document.createElement("div");
         let discountPercent = document.createElement("p");
 
-        discountDiv.classList.add("column", "is-one-quarter");
+        discountDiv.classList.add("column", "is-one-fifth");
 
         gameDiv.classList.add(
           "columns",
@@ -40,12 +43,13 @@ function fetchData() {
         );
         picGame.classList.add(
           "column",
-          "is-one-quarter",
+          "is-two-fifths",
           "is-flex",
-          "is-flex-direction-row"
+          "is-flex-direction-row",
+          "is-justify-content-flex-start"
         );
-        normalPriceCont.classList.add("column", "is-one-quarter");
-        gamePriceCont.classList.add("column", "is-one-quarter");
+        normalPriceCont.classList.add("column", "is-one-fifth");
+        gamePriceCont.classList.add("column", "is-one-fifth");
         gamePic.classList.add("px-4");
         discountPercent.textContent = `% off : ${data[i].savings}`;
         gameName.textContent = data[i].title;
@@ -72,3 +76,45 @@ function fetchData() {
     });
 }
 fetchData();
+button.addEventListener("click", function (e) {
+  e.preventDefault;
+  let input = userInput.value;
+  fetch(`https://www.cheapshark.com/api/1.0/games?title=${input}`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      for (let i = 0; i < data.length; i++) {
+        let searchSection = document.getElementById("searchResults");
+        let container = document.createElement("div");
+        let pictureContainer = document.createElement("div");
+        let picture = document.createElement("img");
+        let priceContainer = document.createElement("div");
+        let actualPrice = document.createElement("p");
+        actualPrice.textContent = `Cheapest Price Found: $ ${data[i].cheapest}`;
+        priceContainer.classList.add("column", "is-one-third");
+        pictureContainer.classList.add("column", "is-one-third");
+        picture.src = data[i].thumb;
+        container.classList.add(
+          "columns",
+          "container",
+          "is-fluid",
+          "is-multiline",
+          "m-4",
+          "is-centered",
+          "mainContent"
+        );
+        let nameOfGameContainer = document.createElement("div");
+        nameOfGameContainer.classList.add("column", "is-one-third");
+        let nameOfGame = document.createElement("a");
+        nameOfGame.textContent = `Name of the game: ${data[i].external}`;
+        nameOfGame.href = `https://www.cheapshark.com/redirect?dealID=${data[i].cheapestDealID}`;
+        searchSection.append(container);
+        container.append(nameOfGameContainer);
+        nameOfGameContainer.append(nameOfGame);
+        container.append(pictureContainer);
+        pictureContainer.append(picture);
+        container.append(priceContainer);
+        priceContainer.append(actualPrice);
+      }
+    });
+});
