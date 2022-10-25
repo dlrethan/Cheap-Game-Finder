@@ -20,7 +20,7 @@ function fetchData() {
         let containerDiv = document.getElementById("dealInfo");
         let gameDiv = document.createElement("div");
         let picGame = document.createElement("div");
-        let gameName = document.createElement("h1");
+        let gameName = document.createElement("a");
         let gamePic = document.createElement("img");
         let gamePriceCont = document.createElement("div");
         let gamePrice = document.createElement("p");
@@ -38,6 +38,8 @@ function fetchData() {
         gamePriceCont.classList.add("column", "is-one-quarter");
         gamePic.classList.add("px-4");
         gameName.textContent = data[i].title;
+        gameName.href =
+          "https://www.cheapshark.com/redirect?dealID=" + data[i].dealID;
         gamePic.src = data[i].thumb;
         gamePrice.textContent = "Sale Price " + data[i].salePrice;
         regularPrice.textContent = "Normal Price " + data[i].normalPrice;
