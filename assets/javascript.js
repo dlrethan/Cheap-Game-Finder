@@ -7,6 +7,8 @@ let dealInfo = document.getElementById("dealInfo");
 let apiUrl = "https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15";
 let userInput = document.getElementById("searchBar");
 let button = document.getElementById("btnClick");
+const searchSection = document.getElementById("searchResults");
+const previousSearches = document.getElementById("previousResults");
 
 function fetchData() {
   fetch(apiUrl)
@@ -76,28 +78,32 @@ function fetchData() {
     });
 }
 fetchData();
+// on click it will search for the game
 button.addEventListener("click", function (e) {
   e.preventDefault;
   let input = userInput.value;
+
   fetch(`https://www.cheapshark.com/api/1.0/games?title=${input}`)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
+
+      // for loop to write data to the page
+
       for (let i = 0; i < data.length; i++) {
-        let searchSection = document.getElementById("searchResults");
-        let container = document.createElement("div");
-        let pictureContainer = document.createElement("div");
-        let picture = document.createElement("img");
-        let priceContainer = document.createElement("div");
-        let actualPrice = document.createElement("p");
+        // creating elements
+        const container = document.createElement("div");
+        const pictureContainer = document.createElement("div");
+        const picture = document.createElement("img");
+        const priceContainer = document.createElement("div");
+        const actualPrice = document.createElement("p");
+        // changing text content and adding classes
         actualPrice.textContent = `Cheapest Price Found: $ ${data[i].cheapest}`;
         priceContainer.classList.add("column", "is-one-third");
         pictureContainer.classList.add("column", "is-one-third");
         picture.src = data[i].thumb;
         container.classList.add(
           "columns",
-          "container",
-          "is-fluid",
           "is-multiline",
           "m-4",
           "is-centered",
@@ -108,6 +114,7 @@ button.addEventListener("click", function (e) {
         let nameOfGame = document.createElement("a");
         nameOfGame.textContent = `Name of the game: ${data[i].external}`;
         nameOfGame.href = `https://www.cheapshark.com/redirect?dealID=${data[i].cheapestDealID}`;
+        // appending elements
         searchSection.append(container);
         container.append(nameOfGameContainer);
         nameOfGameContainer.append(nameOfGame);
@@ -118,3 +125,4 @@ button.addEventListener("click", function (e) {
       }
     });
 });
+// function to generate previous searches

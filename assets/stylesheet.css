@@ -38,11 +38,13 @@
 .mainContent p {
   border-bottom: #00897b solid;
   font-family: "Barlow", sans-serif;
+  font-weight: bold;
 }
 .mainContent a {
   border-bottom: #00897b solid;
   font-family: "Barlow", sans-serif;
   color: black;
+  font-weight: bold;
 }
 .mainContent a:hover {
   scale: 1.1;
