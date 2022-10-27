@@ -97,6 +97,10 @@ button.addEventListener("click", function (e) {
 
       // for loop to write data to the page
       searchSection.innerHTML = "";
+      if (!data.length) {
+        searchSection.innerHTML = "No results found";
+        return;
+      }
 
       for (let i = 0; i < data.length; i++) {
         // creating elements
