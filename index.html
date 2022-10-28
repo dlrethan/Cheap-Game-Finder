@@ -9,6 +9,13 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
     <link rel="stylesheet" href="./assets/stylesheet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap"
+      rel="stylesheet"
+    />
+
     <title>DealsRUs</title>
   </head>
   <body>
@@ -25,7 +32,7 @@
             add to your Steam library!
             <a
               href="#dealInfo"
-              class="button is-info my-2 mt-4 btn fade-in-text"
+              class="button is-info my-2 mt-4 btn fade-in-text customBtn"
               >Check out Our Site!</a
             >
           </p>
@@ -45,26 +52,31 @@
           />
         </p>
         <p class="control">
-          <a class="button is-info" id="btnClick"> Search </a>
+          <a class="button is-info" id="btnClick" href="#searchResults">
+            Search
+          </a>
         </p>
       </div>
-
       <div
-        id="appendSearch"
-        class="mainContent is-flex is-flex-direction-column is-justify-content-flex-start is-align-items-flex-start"
-      ></div>
+        class="mainContent container is-flex is-flex-direction-column is-justify-content-center is-align-items-center is-size-3"
+      >
+        <h2 class="p-5">Previous Search:</h2>
+        Click on The Links to load Again!
+        <ul
+          class="p-2 container is-flex is-flex-direction-column is-justify-content-center is-align-items-center is-size-4"
+          id="appendSearch"
+        ></ul>
+      </div>
     </section>
     <!-- end of search bar -->
+
     <section
-      class="container is-fluid mainContent fade-in-text"
+      class="container is-fluid mainContent fade-in-text is-flex is-flex-direction-column is-size-6"
       id="searchResults"
     ></section>
 
     <!-- start of game section -->
-    <section
-      class="container is-fluid mainContent fade-in-text py-4"
-      id="dealInfo"
-    >
+    <section class="is-fluid mainContent fade-in-text py-4" id="dealInfo">
       <h1>
         Check Out the Best Deals We've Found Today! <br />Click on the title to
         learn more!
