@@ -19,15 +19,15 @@ html {
 .backgroundImage {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url(./img/steam-summer-sale-adventure.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-size: cover;
   font-family: "Comfortaa", cursive;
 }
 .mainContent {

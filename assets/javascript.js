@@ -1,6 +1,10 @@
 var requestOptions = {
   method: "GET",
   redirect: "follow",
+  // mode: "no-cors",
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+  },
 };
 
 let dealInfo = document.getElementById("dealInfo");
@@ -11,7 +15,7 @@ const searchSection = document.getElementById("searchResults");
 const previousSearches = document.getElementById("appendSearch");
 
 function fetchData() {
-  fetch(apiUrl)
+  fetch(apiUrl, requestOptions)
     .then((response) => {
       console.log(response);
       if (!response.ok) {
@@ -138,7 +142,7 @@ function generateGames(data) {
     nameOfGameContainer.classList.add("column", "is-one-third");
     let nameOfGame = document.createElement("a");
     nameOfGame.textContent = `${data[i].external}`;
-    nameOfGame.href = `https://www.cheapshark.com/redirect?dealID=${data[i].cheapestDealID}`;
+    nameOfGame.href = `gameDetails.html?gameID=${data[i].gameID}`;
     // appending elements
     searchSection.append(container);
     container.append(nameOfGameContainer);
@@ -150,7 +154,10 @@ function generateGames(data) {
   }
 }
 function getGameNames(name) {
-  fetch(`https://www.cheapshark.com/api/1.0/games?title=${name}`)
+  fetch(
+    `https://www.cheapshark.com/api/1.0/games?title=${name}`,
+    requestOptions
+  )
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
